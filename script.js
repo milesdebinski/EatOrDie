@@ -1,6 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
 
 
+  const bodyStates = [
+    { name: 'fat', img: 'img/fat.png' },
+    { name: 'normal', img: 'img/normal.png' },
+    { name: 'slim', img: 'img/slim.png' }
+  ];
 
 
 
@@ -56,39 +61,41 @@ document.addEventListener('DOMContentLoaded', () => {
       character.setAttribute("facing", held_direction);
 
       //  EAT COOKIE
-
+      stepsCount++;
+      bodyCondition.textContent = stepsCount;
       // Cookie-1
       let cookie_1 = document.getElementById('cookie-1')
 
       if (playerPosition[0] > 73 && playerPosition[0] < 85 && playerPosition[1] < -34 && playerPosition[1] > -43) {
         cookie_1.style.visibility = 'hidden';
-
+        characterSpritesheet.style.backgroundImage = "url('/img/fat.png')"
+        stepsCount = 0;
       }
       // Cookie-2
       let cookie_2 = document.getElementById('cookie-2')
       if (playerPosition[0] > -79 && playerPosition[0] < -67 && playerPosition[1] < 27 && playerPosition[1] > 16) {
         cookie_2.style.visibility = 'hidden';
-        bodyCondition = 0;
-
         characterSpritesheet.style.backgroundImage = "url('/img/fat.png')"
+        stepsCount = 0;
       }
       console.log(stepsCount);
 
 
       // CHANGE BODY STATUS
-      stepsCount++;
-      bodyCondition.textContent = stepsCount;
-      if (stepsCount === 80) {
+
+      if (stepsCount == 80) {
         characterSpritesheet.style.backgroundImage = "url('/img/normal.png')"
         state.textContent = 'Normal'
+        // stepsCount = 0;
       }
       if (stepsCount === 160) {
         characterSpritesheet.style.backgroundImage = "url('/img/slim.png')"
         state.textContent = 'Slim'
       }
     }
-    character.setAttribute("walking", held_direction ? "true" : "false");
 
+
+    character.setAttribute("walking", held_direction ? "true" : "false");
 
     // LIMIT THE MAP - WALLS
     let leftLimit = -16;
