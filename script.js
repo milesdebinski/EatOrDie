@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (playerPosition[0] > 73 && playerPosition[0] < 85 && playerPosition[1] < -34 && playerPosition[1] > -43) {
         cookie_1.style.visibility = 'hidden';
         characterSpritesheet.style.backgroundImage = "url('/img/normal.png')"
-        stepsCount = 81;
+        stepsCount = 161;
         state.textContent = 'Normal'
       }
       // Cookie-2
@@ -85,12 +85,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // CHANGE BODY STATUS
 
-      if (stepsCount == 80) {
+      if (stepsCount == 160) {
         characterSpritesheet.style.backgroundImage = "url('/img/normal.png')"
         state.textContent = 'Normal'
         // stepsCount = 0;
       }
-      if (stepsCount === 160) {
+      if (stepsCount === 320) {
         characterSpritesheet.style.backgroundImage = "url('/img/slim.png')"
         state.textContent = 'Slim'
       }
