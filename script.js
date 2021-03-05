@@ -70,6 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cookie_1.style.visibility = 'hidden';
         characterSpritesheet.style.backgroundImage = "url('/img/fat.png')"
         stepsCount = 0;
+        state.textContent = 'Fat'
       }
       // Cookie-2
       let cookie_2 = document.getElementById('cookie-2')
@@ -77,6 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cookie_2.style.visibility = 'hidden';
         characterSpritesheet.style.backgroundImage = "url('/img/fat.png')"
         stepsCount = 0;
+        state.textContent = 'Fat'
       }
       console.log(stepsCount);
 
