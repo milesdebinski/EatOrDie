@@ -16,10 +16,14 @@ body {
 ul {
   list-style: none;
   padding: 5px;
+  color: red;
 }
 .map ul {
   display: flex;
   flex-direction: column;
+  justify-items: flex-end;
+  align-items: flex-end;
+
 }
 .map li {
   padding: 5px;
@@ -51,7 +55,7 @@ ul {
   width: calc( var(--grid-cell)* 2 );
   height: calc( var(--grid-cell)* 2 );
   position: absolute;
-  overflow:hidden;
+  overflow: hidden;
 }
 
 
@@ -94,7 +98,8 @@ ul {
 
 /* ------- COOKIES --------- */
 .cookies {
-
+position: relative;
+z-index: -1;
 }
 
 .cookies #cookie-1 {
