@@ -1,0 +1,75 @@
+:root {
+  --pixel-size: 2px;
+  --grid-cell: calc( var(--pixel-size) * 16);
+  --bg: #fdfdfd;
+}
+html, body {
+  height: 100%;
+}
+body {
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+
+/* MAP SIZE */
+.map {
+  image-rendering: pixelated;
+  background-image: url("img/map2.png");
+  background-size: 100%;
+  width: calc(14 * var(--grid-cell));
+  height: calc(10.49 * var(--grid-cell));
+}
+/* CHARACTER SIZE */
+.character {
+  width: calc( var(--grid-cell)* 2 );
+  height: calc( var(--grid-cell)* 2 );
+  position: absolute;
+  overflow:hidden;
+}
+
+
+/* SPRITESHEET CHARACTER */
+.character_spritesheet {
+  position: absolute;
+  background: url("/img/char1black.png") no-repeat no-repeat;
+  background-size: 100%;
+  width: calc( var(--grid-cell)* 8 );
+  height: calc( var(--grid-cell)* 8 );
+}
+
+
+/* SPRITESHEETS ANIMATION */
+.character[facing="right"] .character_spritesheet {
+  background-position-y: calc( var(--pixel-size) * -32 );
+}
+.character[facing="up"] .character_spritesheet {
+  background-position-y: calc( var(--pixel-size) * -64 );
+}
+.character[facing="left"] .character_spritesheet {
+  background-position-y: calc( var(--pixel-size) * -96 );
+}
+.character[walking="true"] .character_spritesheet {
+  animation: walkAnimation 0.4s steps(4) infinite; 
+}
+
+
+/* WALK ANIMATION */
+@keyframes walkAnimation {
+ /* from {
+   transform: translate3d(0%,0%,0);
+ } */
+ to {
+   transform: translate3d(-100%,0%,0);
+ }
+}
+
+
+
+
+
+
+
