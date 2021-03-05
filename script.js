@@ -1,10 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
 
 
+
+
+
+
+  // Global Variables
   let bodyCondition = document.querySelector(".condition")
   let state = document.querySelector(".state")
+  let position = document.querySelector(".position")
   let characterSpritesheet = document.querySelector(".character_spritesheet");
   let stepsCount = 0;
+  let playerPosition = [0, 0];
 
   let character = document.querySelector(".character");
   let map = document.querySelector(".map");
@@ -15,6 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
   let held_directions = []; //State of which arrow keys we are holding down
   let speed = 1; //How fast the character moves in pixels per frame
 
+
+
   const placeCharacter = () => {
 
 
@@ -24,12 +33,48 @@ document.addEventListener('DOMContentLoaded', () => {
     );
 
     const held_direction = held_directions[0];
+
     if (held_direction) {
-      if (held_direction === directions.right) { x += speed; }
-      if (held_direction === directions.left) { x -= speed; }
-      if (held_direction === directions.down) { y += speed; }
-      if (held_direction === directions.up) { y -= speed; }
+      if (held_direction === directions.right) {
+        x += speed;
+        playerPosition[0]++;
+      }
+      if (held_direction === directions.left) {
+        x -= speed;
+        playerPosition[0]--;
+      }
+      if (held_direction === directions.down) {
+        y += speed;
+        playerPosition[1]--;
+      }
+      if (held_direction === directions.up) {
+        y -= speed;
+        playerPosition[1]++;
+      }
+      position.textContent = playerPosition;
+      // console.log(playerPosition);
       character.setAttribute("facing", held_direction);
+
+      //  EAT COOKIE
+
+      // Cookie-1
+      let cookie_1 = document.getElementById('cookie-1')
+
+      if (playerPosition[0] > 73 && playerPosition[0] < 85 && playerPosition[1] < -34 && playerPosition[1] > -43) {
+        cookie_1.style.visibility = 'hidden';
+
+      }
+      // Cookie-2
+      let cookie_2 = document.getElementById('cookie-2')
+      if (playerPosition[0] > -79 && playerPosition[0] < -67 && playerPosition[1] < 27 && playerPosition[1] > 16) {
+        cookie_2.style.visibility = 'hidden';
+        bodyCondition = 0;
+
+        characterSpritesheet.style.backgroundImage = "url('/img/fat.png')"
+      }
+      console.log(stepsCount);
+
+
       // CHANGE BODY STATUS
       stepsCount++;
       bodyCondition.textContent = stepsCount;
@@ -106,6 +151,8 @@ document.addEventListener('DOMContentLoaded', () => {
       held_directions.splice(index, 1)
     }
   });
+
+
 
 
 
