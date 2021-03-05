@@ -68,9 +68,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (playerPosition[0] > 73 && playerPosition[0] < 85 && playerPosition[1] < -34 && playerPosition[1] > -43) {
         cookie_1.style.visibility = 'hidden';
-        characterSpritesheet.style.backgroundImage = "url('/img/fat.png')"
-        stepsCount = 0;
-        state.textContent = 'Fat'
+        characterSpritesheet.style.backgroundImage = "url('/img/normal.png')"
+        stepsCount = 81;
+        state.textContent = 'Normal'
       }
       // Cookie-2
       let cookie_2 = document.getElementById('cookie-2')
