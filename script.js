@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
 
 
-
-
-
-
+  let bodyCondition = document.querySelector(".condition")
+  let state = document.querySelector(".state")
+  let characterSpritesheet = document.querySelector(".character_spritesheet");
+  let stepsCount = 0;
 
   let character = document.querySelector(".character");
   let map = document.querySelector(".map");
@@ -17,6 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const placeCharacter = () => {
 
+
+
     let pixelSize = parseInt(
       getComputedStyle(document.documentElement).getPropertyValue('--pixel-size')
     );
@@ -28,8 +30,20 @@ document.addEventListener('DOMContentLoaded', () => {
       if (held_direction === directions.down) { y += speed; }
       if (held_direction === directions.up) { y -= speed; }
       character.setAttribute("facing", held_direction);
+      // CHANGE BODY STATUS
+      stepsCount++;
+      bodyCondition.textContent = stepsCount;
+      if (stepsCount === 80) {
+        characterSpritesheet.style.backgroundImage = "url('/img/normal.png')"
+        state.textContent = 'Normal'
+      }
+      if (stepsCount === 160) {
+        characterSpritesheet.style.backgroundImage = "url('/img/slim.png')"
+        state.textContent = 'Slim'
+      }
     }
     character.setAttribute("walking", held_direction ? "true" : "false");
+
 
     // LIMIT THE MAP - WALLS
     let leftLimit = -16;
@@ -54,6 +68,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const step = () => {
     placeCharacter();
     window.requestAnimationFrame(() => {
+
+
       step();
     })
   }
@@ -79,6 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let dir = keys[e.which];
     if (dir && held_directions.indexOf(dir) === -1) {
       held_directions.unshift(dir)
+
     }
   })
 
@@ -89,6 +106,8 @@ document.addEventListener('DOMContentLoaded', () => {
       held_directions.splice(index, 1)
     }
   });
+
+
 
 
 

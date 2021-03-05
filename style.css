@@ -13,6 +13,29 @@ body {
   justify-content: center;
   overflow: hidden;
 }
+ul {
+  list-style: none;
+  padding: 5px;
+}
+.map ul {
+  display: flex;
+  flex-direction: column;
+}
+.map li {
+  padding: 5px;
+}
+.map .reset  {
+  color: #000;
+  text-decoration: none;
+  padding: 5px 15px;
+  background: #ddd;
+  border: 1px #000 solid;
+  border-radius: 5px;
+}
+.map .reset:hover {
+  background: #000;
+  color: #ddd;
+}
 
 
 /* MAP SIZE */
@@ -35,7 +58,7 @@ body {
 /* SPRITESHEET CHARACTER */
 .character_spritesheet {
   position: absolute;
-  background: url("/img/char1black.png") no-repeat no-repeat;
+  background: url("/img/fat.png") no-repeat no-repeat;
   background-size: 100%;
   width: calc( var(--grid-cell)* 8 );
   height: calc( var(--grid-cell)* 8 );
