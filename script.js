@@ -66,18 +66,19 @@ document.addEventListener('DOMContentLoaded', () => {
       // Cookie-1
       let cookie_1 = document.getElementById('cookie-1')
 
-      if (playerPosition[0] > 73 && playerPosition[0] < 85 && playerPosition[1] < -34 && playerPosition[1] > -43) {
+      if (cookie_1.style.visibility != 'hidden' && playerPosition[0] > 73 && playerPosition[0] < 85 && playerPosition[1] < -34 && playerPosition[1] > -43) {
         cookie_1.style.visibility = 'hidden';
-        characterSpritesheet.style.backgroundImage = "url('/img/normal.png')"
-        stepsCount = 161;
+        // characterSpritesheet.style.backgroundImage = "url('/img/normal.png')"
+        stepsCount > 180 ? stepsCount -= 180 : stepsCount = 0;
         state.textContent = 'Normal'
       }
       // Cookie-2
       let cookie_2 = document.getElementById('cookie-2')
-      if (playerPosition[0] > -79 && playerPosition[0] < -67 && playerPosition[1] < 27 && playerPosition[1] > 16) {
+      if (cookie_2.style.visibility != 'hidden' && playerPosition[0] > -79 && playerPosition[0] < -67 && playerPosition[1] < 27 && playerPosition[1] > 16) {
         cookie_2.style.visibility = 'hidden';
-        characterSpritesheet.style.backgroundImage = "url('/img/fat.png')"
-        stepsCount = 0;
+        // characterSpritesheet.style.backgroundImage = "url('/img/fat.png')"
+        stepsCount > 320 ? stepsCount -= 320 : stepsCount = 0;
+
         state.textContent = 'Fat'
       }
       console.log(stepsCount);
@@ -85,14 +86,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // CHANGE BODY STATUS
 
-      if (stepsCount == 160) {
+      if (stepsCount >= 320) {
+        characterSpritesheet.style.backgroundImage = "url('/img/slim.png')"
+        state.textContent = 'Slim'
+      }
+      if (stepsCount >= 160 && stepsCount < 320) {
         characterSpritesheet.style.backgroundImage = "url('/img/normal.png')"
         state.textContent = 'Normal'
         // stepsCount = 0;
       }
-      if (stepsCount === 320) {
-        characterSpritesheet.style.backgroundImage = "url('/img/slim.png')"
-        state.textContent = 'Slim'
+      if (stepsCount < 160) {
+        characterSpritesheet.style.backgroundImage = "url('/img/fat.png')"
+        state.textContent = 'Fat'
       }
     }
 
