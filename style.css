@@ -63,7 +63,7 @@ ul {
 /* SPRITESHEET CHARACTER */
 .character_spritesheet {
   position: absolute;
-  background: url("/img/fat.png") no-repeat no-repeat;
+  background: url("/img/fat1.png") no-repeat no-repeat;
   background-size: 100%;
   width: calc( var(--grid-cell)* 8 );
   height: calc( var(--grid-cell)* 8 );

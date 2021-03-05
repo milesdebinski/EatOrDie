@@ -7,9 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
     { name: 'slim', img: 'img/slim.png' }
   ];
 
-
-
-
   // Global Variables
   let bodyCondition = document.querySelector(".condition")
   let state = document.querySelector(".state")
@@ -17,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let characterSpritesheet = document.querySelector(".character_spritesheet");
   let stepsCount = 0;
   let playerPosition = [0, 0];
-
   let character = document.querySelector(".character");
   let map = document.querySelector(".map");
 
@@ -28,17 +24,13 @@ document.addEventListener('DOMContentLoaded', () => {
   let speed = 1; //How fast the character moves in pixels per frame
 
 
-
+  // MOVEMENT + PLAYER POSITION
   const placeCharacter = () => {
-
-
-
     let pixelSize = parseInt(
       getComputedStyle(document.documentElement).getPropertyValue('--pixel-size')
     );
 
     const held_direction = held_directions[0];
-
     if (held_direction) {
       if (held_direction === directions.right) {
         x += speed;
@@ -57,48 +49,42 @@ document.addEventListener('DOMContentLoaded', () => {
         playerPosition[1]++;
       }
       position.textContent = playerPosition;
-      // console.log(playerPosition);
       character.setAttribute("facing", held_direction);
 
       //  EAT COOKIE
-      stepsCount++;
-      bodyCondition.textContent = stepsCount;
-      // Cookie-1
+      stepsCount++; // Count Steps / The more stpes the thinner you get!
+      bodyCondition.textContent = stepsCount; // Display steps.
+      // Cookie_1
       let cookie_1 = document.getElementById('cookie-1')
-
       if (cookie_1.style.visibility != 'hidden' && playerPosition[0] > 73 && playerPosition[0] < 85 && playerPosition[1] < -34 && playerPosition[1] > -43) {
         cookie_1.style.visibility = 'hidden';
         stepsCount > 180 ? stepsCount -= 180 : stepsCount = 0;
-
       }
-      // Cookie-2
+
+      // Cookie_2
       let cookie_2 = document.getElementById('cookie-2')
       if (cookie_2.style.visibility != 'hidden' && playerPosition[0] > -79 && playerPosition[0] < -67 && playerPosition[1] < 27 && playerPosition[1] > 16) {
         cookie_2.style.visibility = 'hidden';
         stepsCount > 320 ? stepsCount -= 320 : stepsCount = 0;
-
       }
-      console.log(stepsCount);
 
 
-      // CHANGE BODY STATUS
-
+      // CHANGE BODY STATUS - FAT - NORMAL - SLIM
       if (stepsCount >= 320) {
-        characterSpritesheet.style.backgroundImage = "url('/img/slim.png')"
+        characterSpritesheet.style.backgroundImage = "url('/img/slim1.png')"
         state.textContent = 'Slim'
       }
       if (stepsCount >= 160 && stepsCount < 320) {
-        characterSpritesheet.style.backgroundImage = "url('/img/normal.png')"
+        characterSpritesheet.style.backgroundImage = "url('/img/normal1.png')"
         state.textContent = 'Normal'
-
       }
       if (stepsCount < 160) {
-        characterSpritesheet.style.backgroundImage = "url('/img/fat.png')"
+        characterSpritesheet.style.backgroundImage = "url('/img/fat1.png')"
         state.textContent = 'Fat'
       }
     }
 
-
+    // WALK SOMETHING - TEST IT MORE MILES!!
     character.setAttribute("walking", held_direction ? "true" : "false");
 
     // LIMIT THE MAP - WALLS
@@ -111,10 +97,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (y < topLimit) { y = topLimit; }
     if (y > bottomLimit) { y = bottomLimit; }
 
-
+    // CAMERA POSITION
     let camera_left = pixelSize * 66;
     let camera_top = pixelSize * 42;
-
+    // CAMERA MOVEMENT
     map.style.transform = `translate3d( ${-x * pixelSize + camera_left}px, ${-y * pixelSize + camera_top}px, 0 )`;
     character.style.transform = `translate3d( ${x * pixelSize}px, ${y * pixelSize}px, 0 )`;
   }
@@ -124,8 +110,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const step = () => {
     placeCharacter();
     window.requestAnimationFrame(() => {
-
-
       step();
     })
   }
