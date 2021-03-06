@@ -19,8 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
   let map = document.querySelector(".map");
 
   //start in the middle of the map
-  let x = 100;
-  let y = 500;
+  let x = 200;
+  let y = 650;
   let held_directions = []; //State of which arrow keys we are holding down
   let speed = 1; //How fast the character moves in pixels per frame
 
@@ -54,22 +54,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
       //  EAT COOKIE
       stepsCount++; // Count Steps / The more stpes the thinner you get!
-      if (stepsCount >= 400) {
-        youlose.style.visibility = 'unset';
-        x = 100;
-        y = 500;
-      }
+      // if (stepsCount >= 400) {
+      //   youlose.style.visibility = 'unset';
+      //   x = 100;
+      //   y = 500;
+      // }
       bodyCondition.textContent = stepsCount; // Display steps.
+
+
       // Cookie_1
       let cookie_1 = document.getElementById('cookie-1')
-      if (cookie_1.style.visibility != 'hidden' && x > 22 && x < 29 && y < 214 && y > 206) {
+      if (cookie_1.style.visibility != 'hidden' && x > 40 && x < 50 && y < 333 && y > 323) {
         cookie_1.style.visibility = 'hidden';
         stepsCount > 180 ? stepsCount -= 180 : stepsCount = 0;
       }
 
       // Cookie_2
       let cookie_2 = document.getElementById('cookie-2')
-      if (cookie_2.style.visibility != 'hidden' && x > 153 && x < 163 && y < 144 && y > 134) {
+      if (cookie_2.style.visibility != 'hidden' && x > 235 && x < 355 && y < 233 && y > 213) {
         cookie_2.style.visibility = 'hidden';
         stepsCount > 320 ? stepsCount -= 320 : stepsCount = 0;
       }
@@ -85,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
         state.textContent = 'Normal'
       }
       if (stepsCount < 160) {
-        characterSpritesheet.style.backgroundImage = "url('/img/fat1.png')"
+        characterSpritesheet.style.backgroundImage = "url('/img/heroFat.png')"
         state.textContent = 'Fat'
       }
     }
@@ -95,32 +97,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // LIMIT THE MAP - WALLS
 
-    let leftLimit = -12;
-    let rightLimit = (16 * 13) - 4;
-    let topLimit = -26;
-    let bottomLimit = (16 * 26);
+    let leftLimit = -3;
+    let rightLimit = (16 * 25) - 14;
+    let topLimit = (16 * 4);
+    let bottomLimit = (16 * 50);
     if (x < leftLimit) { x = leftLimit; }
     if (x > rightLimit) { x = rightLimit; }
     if (y < topLimit) { y = topLimit; }
     if (y > bottomLimit) { y = bottomLimit; }
     console.log(x);
     console.log(y);
-    // INTERNAL WALLS
 
-    if (x < 12 && y < 263) { x = 12 }
-    if (x > 37 && y < 263 && y > 155) { x = 37 }
-    if (y < 264 && x > 40 && y > 160 || y < 264 && x < 9) { y = 264 }
-    if (y > 154 && y < 264 && x > 40) { y = 154 }
-    if (y < 124 && x < 104 || y < 124 && x > 134) { y = 124 }
-    if (y < 124 && y && x < 105) { x = 105 }
-    if (y < 124 && y && x > 133) { x = 133 }
-    if (y < 24) { y = 24 }
+    // INTERNAL WALLS
+    if (x < 42 && y < 512) { x = 42 }
+    if (x > 79 && y < 512 && y > 308) { x = 79 }
+    if (y > 308 && y < 513 && x > 79 || y < 513 && x < 42) { y = 513 }
+    if (y > 307 && y < 512 && x > 79) { y = 307 }
+    if (y < 256 && x < 212 || y < 256 && x > 252) { y = 256 }
+    if (y < 256 && x < 213) { x = 213 }
+    if (y < 256 && x > 251) { x = 251 }
+    // if (y < 24) { y = 24 }
 
 
 
     // CAMERA POSITION
-    let camera_left = pixelSize * 95;
-    let camera_top = pixelSize * 200;
+    let camera_left = pixelSize * 190;
+    let camera_top = pixelSize * 370;
     // CAMERA MOVEMENT
     map.style.transform = `translate3d( ${-x * pixelSize + camera_left}px, ${-y * pixelSize + camera_top}px, 0 )`;
     character.style.transform = `translate3d( ${x * pixelSize}px, ${y * pixelSize}px, 0 )`;

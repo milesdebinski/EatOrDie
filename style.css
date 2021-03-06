@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 :root {
-  --pixel-size: 3px;
+  --pixel-size: 2px;
   --grid-cell: calc( var(--pixel-size) * 16);
   --bg: #000000;
 }
@@ -25,10 +25,11 @@ a {
   color: #fff;
 }
 .map ul {
+  font-size: 16px;
   display: flex;
   flex-direction: column;
-  justify-items: flex-end;
-  align-items: flex-end;
+  justify-items: flex-start;
+  align-items: flex-start;
 
 }
 .map li {
@@ -53,8 +54,8 @@ a {
   image-rendering: pixelated;
   background-image: url("img/map2.png");
   background-size: 100%;
-  width: calc(14 * var(--grid-cell));
-  height: calc(28 * var(--grid-cell));
+  width: calc(26 * var(--grid-cell));
+  height: calc(52 * var(--grid-cell));
   /* border: solid red 2px; */
 }
 /* CHARACTER SIZE */
@@ -70,7 +71,7 @@ a {
 /* SPRITESHEET CHARACTER */
 .character_spritesheet {
   position: absolute;
-  background: url("/img/fat1.png") no-repeat no-repeat;
+  background: url("/img/heroFat.png") no-repeat no-repeat;
   background-size: 100%;
   width: calc( var(--grid-cell)* 8 );
   height: calc( var(--grid-cell)* 8 );
@@ -161,7 +162,6 @@ z-index: -1;
   line-height: 1.4;
 }
 
-
 /* Utility Classes */
 .btn {
   background: #000000;
@@ -171,6 +171,16 @@ z-index: -1;
   background: #fff;
   color: #000;
   padding: 13px 22px;
+}
+.now {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  position: absolute;
+  font-size: 10px;
+
 }
 
 
