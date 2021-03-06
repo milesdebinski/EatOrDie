@@ -79,11 +79,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // CHANGE BODY STATUS - FAT - NORMAL - SLIM
       if (stepsCount >= 320) {
-        characterSpritesheet.style.backgroundImage = "url('/img/slim1.png')"
+        characterSpritesheet.style.backgroundImage = "url('/img/normal1.png')"
         state.textContent = 'Slim'
       }
       if (stepsCount >= 160 && stepsCount < 320) {
-        characterSpritesheet.style.backgroundImage = "url('/img/normal1.png')"
+        characterSpritesheet.style.backgroundImage = "url('/img/heroNormal.png')"
         state.textContent = 'Normal'
       }
       if (stepsCount < 160) {
