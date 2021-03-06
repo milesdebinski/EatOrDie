@@ -54,11 +54,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       //  EAT COOKIE
       stepsCount++; // Count Steps / The more stpes the thinner you get!
-      // if (stepsCount >= 400) {
-      //   youlose.style.visibility = 'unset';
-      //   x = 100;
-      //   y = 500;
-      // }
+      if (stepsCount >= 600) {
+        youlose.style.visibility = 'unset';
+        x = 200;
+        y = 650;
+      }
       bodyCondition.textContent = stepsCount; // Display steps.
 
 
@@ -66,27 +66,27 @@ document.addEventListener('DOMContentLoaded', () => {
       let cookie_1 = document.getElementById('cookie-1')
       if (cookie_1.style.visibility != 'hidden' && x > 40 && x < 50 && y < 333 && y > 323) {
         cookie_1.style.visibility = 'hidden';
-        stepsCount > 180 ? stepsCount -= 180 : stepsCount = 0;
+        stepsCount > 300 ? stepsCount -= 300 : stepsCount = 0;
       }
 
       // Cookie_2
       let cookie_2 = document.getElementById('cookie-2')
       if (cookie_2.style.visibility != 'hidden' && x > 235 && x < 355 && y < 233 && y > 213) {
         cookie_2.style.visibility = 'hidden';
-        stepsCount > 320 ? stepsCount -= 320 : stepsCount = 0;
+        stepsCount > 500 ? stepsCount -= 500 : stepsCount = 0;
       }
 
 
       // CHANGE BODY STATUS - FAT - NORMAL - SLIM
-      if (stepsCount >= 320) {
+      if (stepsCount >= 500) {
         characterSpritesheet.style.backgroundImage = "url('/img/normal1.png')"
         state.textContent = 'Slim'
       }
-      if (stepsCount >= 160 && stepsCount < 320) {
+      if (stepsCount >= 300 && stepsCount < 500) {
         characterSpritesheet.style.backgroundImage = "url('/img/heroNormal.png')"
         state.textContent = 'Normal'
       }
-      if (stepsCount < 160) {
+      if (stepsCount < 300) {
         characterSpritesheet.style.backgroundImage = "url('/img/heroFat.png')"
         state.textContent = 'Fat'
       }
