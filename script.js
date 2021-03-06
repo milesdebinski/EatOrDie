@@ -13,13 +13,14 @@ document.addEventListener('DOMContentLoaded', () => {
   let position = document.querySelector(".position")
   let characterSpritesheet = document.querySelector(".character_spritesheet");
   let stepsCount = 0;
-  let playerPosition = [0, 0];
+  let youlose = document.getElementById('youlose')
+  // let playerPosition = [0, 0];
   let character = document.querySelector(".character");
   let map = document.querySelector(".map");
 
   //start in the middle of the map
-  let x = 95;
-  let y = 60;
+  let x = 100;
+  let y = 500;
   let held_directions = []; //State of which arrow keys we are holding down
   let speed = 1; //How fast the character moves in pixels per frame
 
@@ -34,36 +35,41 @@ document.addEventListener('DOMContentLoaded', () => {
     if (held_direction) {
       if (held_direction === directions.right) {
         x += speed;
-        playerPosition[0]++;
+        // playerPosition[0]++;
       }
       if (held_direction === directions.left) {
         x -= speed;
-        playerPosition[0]--;
+        // playerPosition[0]--;
       }
       if (held_direction === directions.down) {
         y += speed;
-        playerPosition[1]--;
+        // playerPosition[1]--;
       }
       if (held_direction === directions.up) {
         y -= speed;
-        playerPosition[1]++;
+        // playerPosition[1]++;
       }
-      position.textContent = playerPosition;
+      position.textContent = `${x},${y}`;
       character.setAttribute("facing", held_direction);
 
       //  EAT COOKIE
       stepsCount++; // Count Steps / The more stpes the thinner you get!
+      if (stepsCount >= 400) {
+        youlose.style.visibility = 'unset';
+        x = 100;
+        y = 500;
+      }
       bodyCondition.textContent = stepsCount; // Display steps.
       // Cookie_1
       let cookie_1 = document.getElementById('cookie-1')
-      if (cookie_1.style.visibility != 'hidden' && playerPosition[0] > 73 && playerPosition[0] < 85 && playerPosition[1] < -34 && playerPosition[1] > -43) {
+      if (cookie_1.style.visibility != 'hidden' && x > 22 && x < 29 && y < 214 && y > 206) {
         cookie_1.style.visibility = 'hidden';
         stepsCount > 180 ? stepsCount -= 180 : stepsCount = 0;
       }
 
       // Cookie_2
       let cookie_2 = document.getElementById('cookie-2')
-      if (cookie_2.style.visibility != 'hidden' && playerPosition[0] > -79 && playerPosition[0] < -67 && playerPosition[1] < 27 && playerPosition[1] > 16) {
+      if (cookie_2.style.visibility != 'hidden' && x > 153 && x < 163 && y < 144 && y > 134) {
         cookie_2.style.visibility = 'hidden';
         stepsCount > 320 ? stepsCount -= 320 : stepsCount = 0;
       }
@@ -88,18 +94,33 @@ document.addEventListener('DOMContentLoaded', () => {
     character.setAttribute("walking", held_direction ? "true" : "false");
 
     // LIMIT THE MAP - WALLS
-    let leftLimit = -16;
-    let rightLimit = (16 * 13);
-    let topLimit = -28;
-    let bottomLimit = (16 * 8) + 2;
+
+    let leftLimit = -12;
+    let rightLimit = (16 * 13) - 4;
+    let topLimit = -26;
+    let bottomLimit = (16 * 26);
     if (x < leftLimit) { x = leftLimit; }
     if (x > rightLimit) { x = rightLimit; }
     if (y < topLimit) { y = topLimit; }
     if (y > bottomLimit) { y = bottomLimit; }
+    console.log(x);
+    console.log(y);
+    // INTERNAL WALLS
+
+    if (x < 12 && y < 263) { x = 12 }
+    if (x > 37 && y < 263 && y > 155) { x = 37 }
+    if (y < 264 && x > 40 && y > 160 || y < 264 && x < 9) { y = 264 }
+    if (y > 154 && y < 264 && x > 40) { y = 154 }
+    if (y < 124 && x < 104 || y < 124 && x > 134) { y = 124 }
+    if (y < 124 && y && x < 105) { x = 105 }
+    if (y < 124 && y && x > 133) { x = 133 }
+    if (y < 24) { y = 24 }
+
+
 
     // CAMERA POSITION
-    let camera_left = pixelSize * 66;
-    let camera_top = pixelSize * 42;
+    let camera_left = pixelSize * 95;
+    let camera_top = pixelSize * 200;
     // CAMERA MOVEMENT
     map.style.transform = `translate3d( ${-x * pixelSize + camera_left}px, ${-y * pixelSize + camera_top}px, 0 )`;
     character.style.transform = `translate3d( ${x * pixelSize}px, ${y * pixelSize}px, 0 )`;
