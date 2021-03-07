@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       //  EAT COOKIE
       stepsCount++; // Count Steps / The more stpes the thinner you get!
-      if (stepsCount >= 600) {
+      if (stepsCount >= 700) {
         youlose.style.visibility = 'unset';
         x = 200;
         y = 650;
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // CHANGE BODY STATUS - FAT - NORMAL - SLIM
       if (stepsCount >= 500) {
-        characterSpritesheet.style.backgroundImage = "url('/img/normal1.png')"
+        characterSpritesheet.style.backgroundImage = "url('/img/heroSlim.png')"
         state.textContent = 'Slim'
       }
       if (stepsCount >= 300 && stepsCount < 500) {
