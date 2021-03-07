@@ -52,7 +52,7 @@ a {
 /* MAP SIZE */
 .map {
   image-rendering: pixelated;
-  background-image: url("img/map2.png");
+  background-image: url("img/level1.png");
   background-size: 100%;
   width: calc(26 * var(--grid-cell));
   height: calc(52 * var(--grid-cell));
