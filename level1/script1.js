@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let characterSpritesheet = document.querySelector(".character_spritesheet");
   let stepsCount = 0;
   let youlose = document.getElementById('youlose')
-  let nextlevel = document.getElementById('next_level')
   // let playerPosition = [0, 0];
   let character = document.querySelector(".character");
   let map = document.querySelector(".map");
@@ -31,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let pixelSize = parseInt(
       getComputedStyle(document.documentElement).getPropertyValue('--pixel-size')
     );
+
     const held_direction = held_directions[0];
     if (held_direction) {
       if (held_direction === directions.right) {
@@ -105,7 +105,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (x > rightLimit) { x = rightLimit; }
     if (y < topLimit) { y = topLimit; }
     if (y > bottomLimit) { y = bottomLimit; }
-
+    console.log(x);
+    console.log(y);
 
     // INTERNAL WALLS
     if (x < 42 && y < 512) { x = 42 }
@@ -115,15 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (y < 256 && x < 212 || y < 256 && x > 252) { y = 256 }
     if (y < 256 && x < 213) { x = 213 }
     if (y < 256 && x > 251) { x = 251 }
-
-
-    // Next Level
-    if (x > 228 && x < 237 && y < 65) {
-      nextlevel.style.visibility = 'unset';
-      console.log('next level')
-    }
-
-
+    // if (y < 24) { y = 24 }
 
 
 
@@ -181,8 +174,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+  // Next Level
+  if (x < 64 && y < 242 || x < 64 && y > 227) {
 
-
+  }
 
 
 
