@@ -17,7 +17,24 @@ document.addEventListener('DOMContentLoaded', () => {
   // let playerPosition = [0, 0];
   let character = document.querySelector(".character");
   let map = document.querySelector(".map");
-  let interaction = document.querySelector(".lever"); //Check if player is interacting using spacebar
+  let lever = document.querySelector(".lever");
+  let door = document.querySelector(".door")
+
+  //Check if player is interacting using spacebar
+  addEventListener('keydown', (event) => {
+    console.log(event);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.keyCode === 32) {
+      lever.setAttribute('pull', 'true')
+      setTimeout(() => {
+        lever.setAttribute('pull', 'false')
+        door.style.visibility == 'hidden' ? door.style.visibility = 'unset' : door.style.visibility = 'hidden';
+      }, 800)
+
+    }
+  })
 
 
   //start in the middle of the map

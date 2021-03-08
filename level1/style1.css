@@ -74,6 +74,15 @@ a {
   width: calc( var(--grid-cell)* 8 );
   height: calc( var(--grid-cell)* 8 );
 }
+/* Door */
+.door {
+  width: calc( var(--grid-cell)* 2 );
+  height: calc( var(--grid-cell)* 2 );
+  position: absolute;
+  top: 36px;
+  left: 316px;
+  /* visibility: unset; */
+}
 
 
 
@@ -100,8 +109,8 @@ a {
 }
 /* SPRITESHEETS LEAVER ANIMATION */
 
-.lever .lever_spritesheet {
-  animation: leverAnimation 0.8s steps(2) infinite; 
+.lever[pull="true"] .lever_spritesheet {
+  animation: leverAnimation 0.8s steps(2) 1; 
 }
 /* LEAVER ANIMATION */
 @keyframes leverAnimation {
