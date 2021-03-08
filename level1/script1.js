@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let characterSpritesheet = document.querySelector(".character_spritesheet");
   let stepsCount = 0;
   let youlose = document.getElementById('youlose')
+  let nextlevel = document.getElementById('next_level')
   // let playerPosition = [0, 0];
   let character = document.querySelector(".character");
   let map = document.querySelector(".map");
@@ -22,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   //Check if player is interacting using spacebar
   addEventListener('keydown', (event) => {
-    console.log(event);
+    // console.log(event);
   });
 
   document.addEventListener("keydown", (event) => {
@@ -118,17 +119,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let leftLimit = -2;
     let rightLimit = (16 * 50) + 8;
-    let topLimit = 0;
+    // let topLimit = 22;
     let bottomLimit = (16 * 50);
     if (x < leftLimit) { x = leftLimit; }
     if (x > rightLimit) { x = rightLimit; }
-    if (y < topLimit) { y = topLimit; }
+    // if (y < topLimit) { y = topLimit; }
     if (y > bottomLimit) { y = bottomLimit; }
     // console.log(held_direction)
 
 
     // INTERNAL WALLS
-    // if (x < 42 && y < 512) { x = 42 }
+    if (x < 151 && y < 23 || x > 164 && y < 23) { y = 22 }
+    if (x > 150 && x < 165 && y < 20) { y = 20 }
     // if (x > 79 && y < 512 && y > 308) { x = 79 }
     // if (y > 308 && y < 513 && x > 79 || y < 513 && x < 42) { y = 513 }
     // if (y > 307 && y < 512 && x > 79) { y = 307 }
@@ -136,6 +138,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // if (y < 256 && x < 213) { x = 213 }
     // if (y < 256 && x > 251) { x = 251 }
     // if (y < 24) { y = 24 }
+
+    // Next Level
+    if (door.style.visibility == 'hidden') {
+      if (x > 151 && x < 164 && y < 22) {
+        nextlevel.style.visibility = 'unset';
+        console.log('next level')
+      }
+
+    }
+
 
 
 
@@ -195,10 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-  // Next Level
-  if (x < 64 && y < 242 || x < 64 && y > 227) {
 
-  }
 
 
 
