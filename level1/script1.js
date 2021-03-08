@@ -21,21 +21,20 @@ document.addEventListener('DOMContentLoaded', () => {
   let lever = document.querySelector(".lever");
   let door = document.querySelector(".door")
 
-  //Check if player is interacting using spacebar
-  addEventListener('keydown', (event) => {
-    // console.log(event);
-  });
+  //Check player interactions
+  // addEventListener('keydown', (event) => {
+  // console.log(event);
+  // });
 
-  document.addEventListener("keydown", (event) => {
-    if (event.keyCode === 32) {
-      lever.setAttribute('pull', 'true')
-      setTimeout(() => {
-        lever.setAttribute('pull', 'false')
-        door.style.visibility == 'hidden' ? door.style.visibility = 'unset' : door.style.visibility = 'hidden';
-      }, 800)
-
-    }
-  })
+  // document.addEventListener("keydown", (event) => {
+  //   if (event.keyCode === 32) {
+  //     lever.setAttribute('pull', 'true')
+  //     setTimeout(() => {
+  //       lever.setAttribute('pull', 'false')
+  //       door.style.visibility == 'hidden' ? door.style.visibility = 'unset' : door.style.visibility = 'hidden';
+  //     }, 800)
+  //   }
+  // })
 
 
   //start in the middle of the map
@@ -138,6 +137,25 @@ document.addEventListener('DOMContentLoaded', () => {
     // if (y < 256 && x < 213) { x = 213 }
     // if (y < 256 && x > 251) { x = 251 }
     // if (y < 24) { y = 24 }
+
+
+    // Lever mechanics
+    if (x < 33 && y > 60)
+      document.addEventListener("keydown", (event) => {
+        if (event.keyCode === 32) {
+          lever.setAttribute('pull', 'true')
+          setTimeout(() => {
+            // DOOR KEEPS BLINKING WHEN I MAKE IT INTERACTIVE - I DONT KNOW WHAT IS WRONG 
+            // lever.setAttribute('pull', 'false')
+            // door.style.visibility == 'hidden' ? door.style.visibility = 'unset' : door.style.visibility = 'hidden';
+            door.style.visibility = 'hidden';
+          }, 800)
+        }
+      })
+
+
+
+
 
     // Next Level
     if (door.style.visibility == 'hidden') {
