@@ -19,11 +19,13 @@ document.addEventListener('DOMContentLoaded', () => {
   let character = document.querySelector(".character");
   let map = document.querySelector(".map");
 
+
   //start in the middle of the map
   let x = 200;
   let y = 650;
   let held_directions = []; //State of which arrow keys we are holding down
   let speed = 1; //How fast the character moves in pixels per frame
+
 
 
   // MOVEMENT + PLAYER POSITION
@@ -91,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
         state.textContent = 'Fat'
       }
     }
-
+    // Interactions . . . . 
     // WALK SOMETHING - TEST IT MORE MILES!!
     character.setAttribute("walking", held_direction ? "true" : "false");
 
@@ -153,8 +155,10 @@ document.addEventListener('DOMContentLoaded', () => {
     down: "down",
     left: "left",
     right: "right",
+
   }
   const keys = {
+
     38: directions.up,
     37: directions.left,
     39: directions.right,

@@ -44,7 +44,7 @@ a {
   border-radius: 5px;
 }
 .map .reset:hover {
-  background: #000;
+  background: rgb(66, 39, 39);
   color: #ddd;
 }
 
@@ -54,9 +54,10 @@ a {
   image-rendering: pixelated;
   background-image: url("img/level1.png");
   background-size: 100%;
-  width: calc(26 * var(--grid-cell));
+  width: calc(52 * var(--grid-cell));
   height: calc(52 * var(--grid-cell));
-  /* border: solid red 2px; */
+  border: solid red 2px;
+  position: absolute;
 }
 /* CHARACTER SIZE */
 .character {
@@ -65,17 +66,56 @@ a {
   position: absolute;
   overflow: hidden;
 }
-
-
-
 /* SPRITESHEET CHARACTER */
 .character_spritesheet {
   position: absolute;
-  background: url("/img/heroFat.png") no-repeat no-repeat;
+  background: url("/img/heroSlim.png") no-repeat no-repeat;
   background-size: 100%;
   width: calc( var(--grid-cell)* 8 );
   height: calc( var(--grid-cell)* 8 );
 }
+
+
+
+
+
+/* LEVER SIZE */
+.lever {
+ 
+  width: calc( var(--grid-cell)* 2 );
+  height: calc( var(--grid-cell)* 2 );
+  position: absolute;
+  overflow: hidden;
+  top: 150px;
+  left: 10px;
+}
+/* SPRITESHEET LEAVER */
+.lever_spritesheet {
+  
+  position: absolute;
+  background: url("/level1/img/lever1.png") no-repeat no-repeat;
+  background-size: 100%;
+  width: calc( var(--grid-cell)* 4);
+  height: calc( var(--grid-cell)* 4 );
+}
+/* SPRITESHEETS LEAVER ANIMATION */
+
+.lever .lever_spritesheet {
+  animation: leverAnimation 0.8s steps(2) infinite; 
+}
+/* LEAVER ANIMATION */
+@keyframes leverAnimation {
+  from {
+    transform: translate3d(0%,0%,0);
+  }
+  to {
+    transform: translate3d(-100%,0,0);
+  }
+ }
+
+
+
+
 
 
 /* SPRITESHEETS ANIMATION */

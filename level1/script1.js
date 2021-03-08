@@ -17,10 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // let playerPosition = [0, 0];
   let character = document.querySelector(".character");
   let map = document.querySelector(".map");
+  let interaction = document.querySelector(".lever"); //Check if player is interacting using spacebar
+
 
   //start in the middle of the map
-  let x = 200;
-  let y = 650;
+  let x = 60;
+  let y = 65;
   let held_directions = []; //State of which arrow keys we are holding down
   let speed = 1; //How fast the character moves in pixels per frame
 
@@ -54,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       //  EAT COOKIE
       stepsCount++; // Count Steps / The more stpes the thinner you get!
-      if (stepsCount >= 700) {
+      if (stepsCount >= 70000) {
         youlose.style.visibility = 'unset';
         x = 200;
         y = 650;
@@ -78,18 +80,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
       // CHANGE BODY STATUS - FAT - NORMAL - SLIM
-      if (stepsCount >= 500) {
-        characterSpritesheet.style.backgroundImage = "url('/img/heroSlim.png')"
-        state.textContent = 'Slim'
-      }
-      if (stepsCount >= 300 && stepsCount < 500) {
-        characterSpritesheet.style.backgroundImage = "url('/img/heroNormal.png')"
-        state.textContent = 'Normal'
-      }
-      if (stepsCount < 300) {
-        characterSpritesheet.style.backgroundImage = "url('/img/heroFat.png')"
-        state.textContent = 'Fat'
-      }
+      //   if (stepsCount >= 500) {
+      //     characterSpritesheet.style.backgroundImage = "url('/img/heroSlim.png')"
+      //     state.textContent = 'Slim'
+      //   }
+      //   if (stepsCount >= 300 && stepsCount < 500) {
+      //     characterSpritesheet.style.backgroundImage = "url('/img/heroNormal.png')"
+      //     state.textContent = 'Normal'
+      //   }
+      //   if (stepsCount < 300) {
+      //     characterSpritesheet.style.backgroundImage = "url('/img/heroFat.png')"
+      //     state.textContent = 'Fat'
+      //   }
     }
 
     // WALK SOMETHING - TEST IT MORE MILES!!
@@ -97,31 +99,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // LIMIT THE MAP - WALLS
 
-    let leftLimit = -3;
-    let rightLimit = (16 * 25) - 14;
-    let topLimit = (16 * 4);
+    let leftLimit = -2;
+    let rightLimit = (16 * 50) + 8;
+    let topLimit = 0;
     let bottomLimit = (16 * 50);
     if (x < leftLimit) { x = leftLimit; }
     if (x > rightLimit) { x = rightLimit; }
     if (y < topLimit) { y = topLimit; }
     if (y > bottomLimit) { y = bottomLimit; }
-    console.log(x);
-    console.log(y);
+    // console.log(held_direction)
+
 
     // INTERNAL WALLS
-    if (x < 42 && y < 512) { x = 42 }
-    if (x > 79 && y < 512 && y > 308) { x = 79 }
-    if (y > 308 && y < 513 && x > 79 || y < 513 && x < 42) { y = 513 }
-    if (y > 307 && y < 512 && x > 79) { y = 307 }
-    if (y < 256 && x < 212 || y < 256 && x > 252) { y = 256 }
-    if (y < 256 && x < 213) { x = 213 }
-    if (y < 256 && x > 251) { x = 251 }
+    // if (x < 42 && y < 512) { x = 42 }
+    // if (x > 79 && y < 512 && y > 308) { x = 79 }
+    // if (y > 308 && y < 513 && x > 79 || y < 513 && x < 42) { y = 513 }
+    // if (y > 307 && y < 512 && x > 79) { y = 307 }
+    // if (y < 256 && x < 212 || y < 256 && x > 252) { y = 256 }
+    // if (y < 256 && x < 213) { x = 213 }
+    // if (y < 256 && x > 251) { x = 251 }
     // if (y < 24) { y = 24 }
 
 
 
     // CAMERA POSITION
-    let camera_left = pixelSize * 190;
+    let camera_left = pixelSize * 400;
     let camera_top = pixelSize * 370;
     // CAMERA MOVEMENT
     map.style.transform = `translate3d( ${-x * pixelSize + camera_left}px, ${-y * pixelSize + camera_top}px, 0 )`;
@@ -142,12 +144,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // MOVEMENT
   const directions = {
+
     up: "up",
     down: "down",
     left: "left",
     right: "right",
   }
   const keys = {
+
     38: directions.up,
     37: directions.left,
     39: directions.right,
