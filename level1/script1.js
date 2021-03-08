@@ -26,20 +26,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // console.log(event);
   // });
 
-  // document.addEventListener("keydown", (event) => {
-  //   if (event.keyCode === 32) {
-  //     lever.setAttribute('pull', 'true')
-  //     setTimeout(() => {
-  //       lever.setAttribute('pull', 'false')
-  //       door.style.visibility == 'hidden' ? door.style.visibility = 'unset' : door.style.visibility = 'hidden';
-  //     }, 800)
-  //   }
-  // })
 
 
   //start in the middle of the map
-  let x = 60;
-  let y = 65;
+  let x = 740;
+  let y = 800;
   let held_directions = []; //State of which arrow keys we are holding down
   let speed = 1; //How fast the character moves in pixels per frame
 
