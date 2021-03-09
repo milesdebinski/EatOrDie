@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       //  EAT COOKIE
       stepsCount++; // Count Steps / The more stpes the thinner you get!
-      if (stepsCount >= 2700) {
+      if (stepsCount >= 27000) {
         youlose.style.visibility = 'unset';
         x = 200;
         y = 650;
