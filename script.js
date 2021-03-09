@@ -21,8 +21,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   //start in the middle of the map
-  let x = 200;
-  let y = 650;
+   // 737 / 795
+   let x = 200;
+   let y = 650;
+   // initial stepsCount
+   if (x == 200 && y == 650) {stepsCount = 2001}
   let held_directions = []; //State of which arrow keys we are holding down
   let speed = 1; //How fast the character moves in pixels per frame
 
@@ -56,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       //  EAT COOKIE
       stepsCount++; // Count Steps / The more stpes the thinner you get!
-      if (stepsCount >= 700) {
+      if (stepsCount >= 2700) {
         youlose.style.visibility = 'unset';
         x = 200;
         y = 650;
@@ -75,24 +78,24 @@ document.addEventListener('DOMContentLoaded', () => {
       let cookie_2 = document.getElementById('cookie-2')
       if (cookie_2.style.visibility != 'hidden' && x > 235 && x < 355 && y < 233 && y > 213) {
         cookie_2.style.visibility = 'hidden';
-        stepsCount > 500 ? stepsCount -= 500 : stepsCount = 0;
+        stepsCount > 300 ? stepsCount -= 300 : stepsCount = 0;
       }
 
 
       // CHANGE BODY STATUS - FAT - NORMAL - SLIM
-      if (stepsCount >= 500) {
+      if (stepsCount >= 2000) {
         characterSpritesheet.style.backgroundImage = "url('/img/heroSlim.png')"
-        state.textContent = 'Slim'
+        // state.textContent = 'Slim'
       }
-      if (stepsCount >= 300 && stepsCount < 500) {
+      if (stepsCount >= 1000 && stepsCount < 2000) {
         characterSpritesheet.style.backgroundImage = "url('/img/heroNormal.png')"
-        state.textContent = 'Normal'
+        // state.textContent = 'Normal'
       }
-      if (stepsCount < 300) {
+      if (stepsCount < 1000) {
         characterSpritesheet.style.backgroundImage = "url('/img/heroFat.png')"
-        state.textContent = 'Fat'
+        // state.textContent = 'Fat'
       }
-    }
+  }
     // Interactions . . . . 
     // WALK SOMETHING - TEST IT MORE MILES!!
     character.setAttribute("walking", held_direction ? "true" : "false");

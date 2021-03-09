@@ -1,10 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 :root {
   --pixel-size: 2px;
-  --grid-cell: calc( var(--pixel-size) * 16);
+  --grid-cell: calc(var(--pixel-size) * 16);
   --bg: #000000;
 }
-html, body {
+html,
+body {
   height: 100%;
 }
 body {
@@ -13,7 +14,7 @@ body {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  font-family: 'Press Start 2P', cursive;
+  font-family: "Press Start 2P", cursive;
 }
 ul {
   list-style: none;
@@ -30,12 +31,11 @@ a {
   flex-direction: column;
   justify-items: flex-start;
   align-items: flex-start;
-
 }
 .map li {
   padding: 5px;
 }
-.map .reset  {
+.map .reset {
   color: #000;
   text-decoration: none;
   padding: 5px 15px;
@@ -47,7 +47,6 @@ a {
   background: #000;
   color: #ddd;
 }
-
 
 /* MAP SIZE */
 .map {
@@ -61,54 +60,49 @@ a {
 }
 /* CHARACTER SIZE */
 .character {
-  width: calc( var(--grid-cell)* 2 );
-  height: calc( var(--grid-cell)* 2 );
+  width: calc(var(--grid-cell) * 2);
+  height: calc(var(--grid-cell) * 2);
   position: absolute;
   overflow: hidden;
 }
 
-
-
 /* SPRITESHEET CHARACTER */
 .character_spritesheet {
   position: absolute;
-  background: url("/img/heroFat.png") no-repeat no-repeat;
+  background: url("/img/heroSlim.png") no-repeat no-repeat;
   background-size: 100%;
-  width: calc( var(--grid-cell)* 8 );
-  height: calc( var(--grid-cell)* 8 );
+  width: calc(var(--grid-cell) * 8);
+  height: calc(var(--grid-cell) * 8);
 }
-
 
 /* SPRITESHEETS ANIMATION */
 .character[facing="right"] .character_spritesheet {
-  background-position-y: calc( var(--pixel-size) * -32 );
+  background-position-y: calc(var(--pixel-size) * -32);
 }
 .character[facing="up"] .character_spritesheet {
-  background-position-y: calc( var(--pixel-size) * -64 );
+  background-position-y: calc(var(--pixel-size) * -64);
 }
 .character[facing="left"] .character_spritesheet {
-  background-position-y: calc( var(--pixel-size) * -96 );
+  background-position-y: calc(var(--pixel-size) * -96);
 }
 .character[walking="true"] .character_spritesheet {
-  animation: walkAnimation 0.4s steps(4) infinite; 
+  animation: walkAnimation 0.4s steps(4) infinite;
 }
-
 
 /* WALK ANIMATION */
 @keyframes walkAnimation {
- /* from {
+  /* from {
    transform: translate3d(0%,0%,0);
  } */
- to {
-   transform: translate3d(-100%,0%,0);
- }
+  to {
+    transform: translate3d(-100%, 0%, 0);
+  }
 }
-
 
 /* ------- COOKIES --------- */
 .cookies {
-position: relative;
-z-index: -1;
+  position: relative;
+  z-index: -1;
 }
 
 .cookies #cookie-1 {
@@ -116,20 +110,20 @@ z-index: -1;
   top: 700px;
   left: 110px;
   visibility: none;
-  width: 33px;
-  height: 33px;
+  width: 32px;
+  height: 32px;
   position: absolute;
-  overflow:hidden;
+  overflow: hidden;
 }
 .cookies #cookie-2 {
   position: absolute;
   top: 485px;
   left: 500px;
   visibility: none;
-  width: 50px;
-  height: 50px;
+  width: 32px;
+  height: 32px;
   position: absolute;
-  overflow:hidden;
+  overflow: hidden;
 }
 
 /* YOU DIE */
@@ -211,11 +205,4 @@ z-index: -1;
   color: #fff;
   position: absolute;
   font-size: 10px;
-
 }
-
-
-
-
-
-
