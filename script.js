@@ -66,7 +66,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       bodyCondition.textContent = stepsCount; // Display steps.
 
-
       // Cookie_1
       let cookie_1 = document.getElementById('cookie-1')
       if (cookie_1.style.visibility != 'hidden' && x > 40 && x < 50 && y < 333 && y > 323) {
@@ -80,7 +79,6 @@ document.addEventListener('DOMContentLoaded', () => {
         cookie_2.style.visibility = 'hidden';
         stepsCount > 300 ? stepsCount -= 300 : stepsCount = 0;
       }
-
 
       // CHANGE BODY STATUS - FAT - NORMAL - SLIM
       if (stepsCount >= 2000) {
@@ -128,10 +126,6 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log('next level')
     }
 
-
-
-
-
     // CAMERA POSITION
     let camera_left = pixelSize * 190;
     let camera_top = pixelSize * 370;
@@ -149,8 +143,6 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   }
   step(); //START THE FIRST STEP
-
-
 
   // MOVEMENT
   const directions = {
